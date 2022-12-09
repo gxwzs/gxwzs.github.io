@@ -1,0 +1,125 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="X-UA-Compatible" content="IE=edge"><meta name="author" content="Yourname"><title>gao website</title><meta name="description" content="A simple and beautiful blog"><meta name="keywords" content="Blog,博客,Hexo"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black" name="apple-mobile-web-app-status-bar-style"><meta content="telephone=no" name="format-detection"><meta name="renderer" content="webkit"><link rel="shortcut icon" type="image/x-icon" href="/images/favicon.webp"><link rel="stylesheet" href="/css/style.css"><link rel="stylesheet" href="/css/blog_basic.css"><link rel="stylesheet" href="/css/font-awesome.min.css"><link rel="stylesheet" href="/css/insight.css"><link rel="stylesheet" href="/css/search.css"><link rel="alternate" type="application/atom+xml" title="ATOM 1.0" href="/atom.xml"><script src="/js/jquery.js"></script><meta name="generator" content="Hexo 5.2.0"></head><body><div class="page-top animated fadeInDown"><div class="nav"><li> <a class="current" href="/">Home</a></li><li> <a href="/archives">Archives</a></li><li> <a href="/tags">Tags</a></li><li> <a href="/about">About</a></li><li> <a href="/links">Links</a></li></div><div class="information"><div class="nav_right_btn"><li><a class="fa fa-chevron-left" onclick="window.history.go(-1)" style="display:none;"> </a></li><li><a class="fa fa-search" onclick="openWindow();"></a></li></div><div class="avatar"><img src="/images/logo.webp"></div></div></div><div class="sidebar animated fadeInDown"><div class="sidebar-top"><div class="logo-title"><div class="title"><img src="/images/logo@2x.webp" style="width:220px;" alt="favicon"><h3 title=""><a href="/">gao website</a></h3><div class="description"><p>A simple and beautiful blog</p></div></div><ul class="social-links"><li><a target="_blank" rel="noopener" href="https://github.com/Lhcfl"><i class="fa fa-github"></i></a></li><li><a href="mailto:yourname@example.com"><i class="fa fa-envelope"></i></a></li><li><a target="_blank" rel="noopener" href="https://zhihu.com/people/jin-xin-4-68"><i class="fa fa-mortar-board"></i></a></li></ul></div></div><div class="footer"><div class="p"> <span> 全站CC-BY-SA-3.0 </span><i class="fa fa-star"></i><span> Yourname</span></div><div class="by_farbox"><span>Powered by </span><a href="https://hexo.io/zh-cn/" target="_blank">Hexo </a><span> & </span><span>Anatolo </span></div><div class="beian"></div></div></div><div class="main"><div class="autopagerize_page_element"><div class="content"><div class="post animated fadeInDown"><div class="post-title"><h3><a href="/2022/12/08/linux%E6%96%87%E4%BB%B6%E7%B1%BB%E5%9E%8B/"></a></h3></div><div class="post-content"><div class="card"><p><h2 id="linux文件类型"><a href="#linux文件类型" class="headerlink" title="linux文件类型"></a>linux文件类型</h2><p>l 链接文件</p>
+<p>p 管道文件</p>
+<p>s 套接字文件</p>
+<p>c 字符设备文件</p>
+<p>b 块设备文件</p>
+<p>d 目录文件</p>
+<p>(查看文件用ll,stat)</p>
+<h2 id="查找文件"><a href="#查找文件" class="headerlink" title="查找文件"></a>查找文件</h2><h4 id="which"><a href="#which" class="headerlink" title="which"></a>which</h4><p>命令which可以查到在环境变量$path设置的目录里的文件</p>
+<h4 id="find"><a href="#find" class="headerlink" title="find"></a>find</h4><ul>
+<li>实时查找,遍历指定路径下文件完成查找</li>
+<li>工作特点<ol>
+<li>查找速度略慢</li>
+<li>实时查找</li>
+<li>精确查找</li>
+</ol>
+</li>
+</ul>
+<p><code>find [选项] [路径] [查找条件+处理动作]</code></p>
+<h4 id="查找条件"><a href="#查找条件" class="headerlink" title="查找条件"></a>查找条件</h4><ul>
+<li>根据文件名</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">find /etc -name <span class="string">&quot;ifcfg-ens33&quot;</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>根据文件大小</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">find /etc -size +5M <span class="comment">#大于5M</span></span><br><span class="line">find /etc -size 5M <span class="comment">#等于5M</span></span><br><span class="line">find /etc -size -5M <span class="comment">#小于5M</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>指定查找深度</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">find / -maxdepth 3 -a -name <span class="string">&quot;ifcfg-ens33&quot;</span> <span class="comment">#最大查找深度3层</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>根据时间查找</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">find /etc -mtime +5 <span class="comment">#修改时间超过5天</span></span><br><span class="line">find /etc -mtime  5 <span class="comment">#修改时间等于5天</span></span><br><span class="line">find /etc -mtime -5 <span class="comment">#修改时间5天以内</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>根据文件属主,属组查找</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">find /home -user root <span class="comment">#属主是root</span></span><br><span class="line">find /home -group root <span class="comment">#属组是root</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>根据文件类型</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">find /dev -<span class="built_in">type</span> d <span class="comment">#目录文件</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>根据文件权限</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">find / -perm 644 -ls <span class="comment">#权限等于644的文件</span></span><br><span class="line">find / -perm -644 -ls <span class="comment">#权限小于644的文件</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>按正则表达式</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">find /etc -regex <span class="string">&#x27;.*ifcfg-ens[0-9][0-9]&#x27;</span></span><br><span class="line"><span class="comment"># .*任意多个字符</span></span><br><span class="line"><span class="comment"># [0-9]任意一个数字</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="处理动作"><a href="#处理动作" class="headerlink" title="处理动作"></a>处理动作</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">-<span class="built_in">print</span> <span class="comment">#文件打印</span></span><br><span class="line">-ls    <span class="comment">#类似于ll-s命令,显示文件个数</span></span><br><span class="line">-delete <span class="comment">#删除查找到的文件</span></span><br><span class="line">-fls   <span class="comment">#查找到所有文件长格式信息保存到指定文件</span></span><br><span class="line">-ok <span class="built_in">command</span> &#123;&#125; \ <span class="comment">#对查找到的文件执行co定命令</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+
+
+
+</p></div></div><div class="post-footer"><div class="meta"><div class="info"><i class="fa fa-sun-o"></i><span class="date">2022-12-08</span><span class="leancloud_visitors"></span><span>About 377 words, 1 min 15 sec  read</span></div></div></div></div><div class="post animated fadeInDown"><div class="post-title"><h3><a href="/2020/11/28/markdown%E5%9F%BA%E6%9C%AC%E8%AF%AD%E6%B3%95/"></a></h3></div><div class="post-content"><div class="card"><p><h1 id="markdown基本语法"><a href="#markdown基本语法" class="headerlink" title="markdown基本语法"></a>markdown基本语法</h1><h2 id="标题"><a href="#标题" class="headerlink" title="标题"></a>标题</h2><p>#号后接空格加文字，1个#号为一级标题，最高支持六级</p>
+<h2 id="字体"><a href="#字体" class="headerlink" title="字体"></a>字体</h2><p>左右两边各一个*中间的文字为倾斜部分， <em>斜</em></p>
+<p>左右两边各两个*中间的文字为加粗部分，<strong>粗</strong></p>
+<p>左右两边各三个*中间文字为倾斜加粗部分，     </p>
+<p>左右两边各两个~中文字为加删除线部分，<del>删除</del></p>
+<h2 id="分割线"><a href="#分割线" class="headerlink" title="分割线"></a>分割线</h2><p>三个或三个以上的*，-都可以，示例</p>
+<h2 id="图片"><a href="#图片" class="headerlink" title="图片"></a>图片</h2><p>！[图片下方文字]（图片地址 “图片title”）</p>
+<p><img src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1606541100899&di=553d9d70dac545d42939fb96803249d6&imgtype=0&src=http://i0.hdslb.com/bfs/article/aa83ce00f0c95917ae2a6184d19e3ed83fa6b31c.jpg%22%E8%BE%89%E5%A4%9C%22" alt="shinomiya"></p>
+<p>支持本地与网络地址，本地图片可直接上传，title可不加</p>
+<p><em>全英文输入符号</em></p>
+<h2 id="超链接"><a href="#超链接" class="headerlink" title="超链接"></a>超链接</h2><p>[超链接名]（超链接地址”title”）支持本地</p>
+<h2 id="列表"><a href="#列表" class="headerlink" title="列表"></a>列表</h2><p>无序列表：用* - +加上空格接文字，示例：</p>
+<ul>
+<li>列表内容</li>
+</ul>
+<p>有序列表：数字加点加空格接文字，示例：</p>
+<ol>
+<li>列表内容</li>
+</ol>
+<p>列表嵌套：上一级与下一级之间加tab，示例：</p>
+<ul>
+<li>列表内容<ol>
+<li>次级列表<ul>
+<li>次次级列表</li>
+</ul>
+</li>
+</ol>
+</li>
+</ul>
+<h2 id="表格"><a href="#表格" class="headerlink" title="表格"></a>表格</h2><p>用|号隔开单元格</p>
+<p>示例：</p>
+<table>
+<thead>
+<tr>
+<th>表头</th>
+<th>表头</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>内容</td>
+<td>内容</td>
+</tr>
+</tbody></table>
+<h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><p>单行代码用反引号``</p>
+<p>代码块用前后三个反引号``````</p>
+<p><code>printf(&quot;hehe&quot;);</code></p>
+<h2 id="引用"><a href="#引用" class="headerlink" title="引用"></a>引用</h2><p>用&gt;号加上文字内容(可以多个&gt;),示例:</p>
+<blockquote>
+<p>引用内容</p>
+</blockquote>
+<blockquote>
+<blockquote>
+<blockquote>
+<p>多级引用</p>
+</blockquote>
+</blockquote>
+</blockquote>
+<p><strong>流程图见下一次</strong></p>
+</p></div></div><div class="post-footer"><div class="meta"><div class="info"><i class="fa fa-sun-o"></i><span class="date">2020-11-28</span><span class="leancloud_visitors"></span><span>About 356 words, 1 min 11 sec  read</span></div></div></div></div><div class="pagination"><ul class="clearfix"></ul></div></div></div></div><script src="/js/jquery-migrate-1.2.1.min.js"></script><script src="/js/jquery.appear.js"></script><script src="/js/add-bookmark.js"></script><script>(function(window){var INSIGHT_CONFIG={TRANSLATION:{POSTS:"Posts",PAGES:"Pages",CATEGORIES:"Categories",TAGS:"Tags",UNTITLED:"(Untitled)",},CONTENT_URL:"/content.json",};window.INSIGHT_CONFIG=INSIGHT_CONFIG})(window);</script><script src="/js/insight.js" defer></script><div class="searchbox ins-search"><div class="searchbox-container ins-search-container"><div class="searchbox-input-wrapper"><input class="searchbox-input ins-search-input" type="text" placeholder="Search..."><span class="searchbox-close"><a class="fa fa-times-circle" onclick="closeWindow();"></a></span></div><div class="searchbox-result-wrapper ins-section-wrapper"><div class="ins-section-container"><p>Seraching...</p></div></div></div></div></body></html>
